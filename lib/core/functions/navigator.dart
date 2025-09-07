@@ -1,10 +1,4 @@
-import 'package:flutter/material.dart';
-
-// void defaultNavigator(context, Widget nextScreen) {
-//   Navigator.of(context).push(
-//     FadeTransitionWidet(page: nextScreen),
-//   );
-// }
+import 'package:flutter/material.dart'; 
 
 void defaultReplacementNavigator(context, Widget nextScreen) {
   Navigator.pushReplacement(

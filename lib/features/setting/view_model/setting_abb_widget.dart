@@ -30,11 +30,11 @@ class SettingBarWidget extends StatelessWidget {
           children: [
             const Text(
               "Ahmed",
-              style: AppStyles.textStyle20,
+              style: AppStyles.textStyle18,
             ),
             Text(
               "View profile",
-              style: AppStyles.textStyle16
+              style: AppStyles.textStyle14
                   .copyWith(color: AppColors.greyDiscription),
             ),
           ],

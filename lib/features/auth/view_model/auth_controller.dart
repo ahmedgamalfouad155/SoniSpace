@@ -10,7 +10,24 @@ class AuthController extends ChangeNotifier {
   TextEditingController loginPasswordController = TextEditingController();
 
   bool isBliend = true;
-  bool obSucureForm = true; 
+  bool obSucurePassword = true;
+  bool obSucureConfirmPassword = true;
+  bool obSucureloginPassword = true;
+
+  void changePassordObSucure() {
+    obSucurePassword = !obSucurePassword;
+    notifyListeners();
+  }
+
+  void changeConfirmPasswordObSucure() {
+    obSucureConfirmPassword = !obSucureConfirmPassword;
+    notifyListeners();
+  }
+
+  void changeloginPasswordObSucure() {
+    obSucureloginPassword = !obSucureloginPassword;
+    notifyListeners();
+  }
 
   void changeHumanStatue() {
     isBliend = !isBliend;
@@ -24,5 +41,15 @@ class AuthController extends ChangeNotifier {
     signupPasswordController.dispose();
     confirmPasswordController.dispose();
     super.dispose();
+  }
+
+  void changeTextEditControllerToEmpty() {
+    usernameController.clear();
+    signupEmailController.clear();
+    signupPasswordController.clear();
+    confirmPasswordController.clear();
+
+    loginEmailController.clear();
+    loginPasswordController.clear();
   }
 }

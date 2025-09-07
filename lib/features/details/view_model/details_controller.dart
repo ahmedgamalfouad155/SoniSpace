@@ -2,10 +2,16 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 class DetailsController extends ChangeNotifier {
+  
   static final player = AudioPlayer();
   static Duration duration = Duration.zero;
 
-  static bool isPlaying = false; 
+  static bool isPlaying = false;
+
+  void changeisPlayingState() {
+    isPlaying = !isPlaying;
+    notifyListeners();
+  }
 
   List<String> listOfAudio = [
     "sounds/angelical-pad-143276.mp3",
@@ -30,5 +36,5 @@ class DetailsController extends ChangeNotifier {
     player.onDurationChanged.listen((newDuration) {
       duration = newDuration;
     });
-  } 
+  }
 }

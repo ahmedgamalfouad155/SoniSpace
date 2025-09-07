@@ -24,8 +24,7 @@ class SearchHomeWidget extends StatelessWidget {
         controller: searchController,
         validator: (val) {
           return null;
-        },
-        borderRadius: 26,
+        }, 
         colorBorder: AppColors.greySearch,
       ),
     );

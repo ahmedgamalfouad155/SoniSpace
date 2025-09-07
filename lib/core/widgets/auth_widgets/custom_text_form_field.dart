@@ -2,24 +2,15 @@ import 'package:flutter/material.dart';
 
 import '../../utils/app_colors.dart';
 
-class CustomTextFormField extends StatefulWidget {
+class CustomTextFormField extends StatelessWidget {
   final String hint;
   final FormFieldValidator<String>? validator;
   final TextEditingController controller;
-  final TextInputType keyboardType;
-  final IconData prefixIcon;
   final Icon? suffixIcon;
-  final bool isPassword;
-  final bool showPrefixIcon;
+  final bool obsucreText;
   final bool showSuffixIcon;
-  final int? maxLength;
-  final Function()? onTap;
-  final Function()? onTapPrefixIcon;
   final Function()? onTapSuffixIcon;
-  final double borderRadius;
   final EdgeInsetsGeometry? contentPadding;
-  final void Function(String)? onChanged;
-  final void Function(String)? onSubmitted;
   final Color colorBorder;
 
   const CustomTextFormField({
@@ -27,80 +18,50 @@ class CustomTextFormField extends StatefulWidget {
     required this.hint,
     required this.controller,
     required this.validator,
-    this.isPassword = false,
+    this.obsucreText = false,
     this.showSuffixIcon = false,
-    this.showPrefixIcon = false,
-    this.onTap,
-    this.keyboardType = TextInputType.text,
-    this.maxLength,
-    this.prefixIcon = Icons.person,
     this.suffixIcon,
-    this.onTapPrefixIcon,
     this.onTapSuffixIcon,
-    this.borderRadius = 30,
     this.contentPadding,
-    this.onChanged,
-    this.onSubmitted,
     this.colorBorder = AppColors.white,
   }) : super(key: key);
 
   @override
-  State<CustomTextFormField> createState() => _CustomTextFormFieldState();
-}
-
-class _CustomTextFormFieldState extends State<CustomTextFormField> {
-  bool showPassword = true;
-
-  @override
   Widget build(BuildContext context) {
     return TextFormField(
-      textCapitalization: TextCapitalization.none,
-      maxLines: 1,
-      maxLength: widget.maxLength,
-      obscureText: widget.isPassword ? showPassword : false,
-      keyboardType: widget.keyboardType,
-      controller: widget.controller,
-      autovalidateMode: AutovalidateMode.disabled,
-      validator: widget.validator,
+      obscureText: obsucreText ,
+      controller: controller,
+      validator: validator,
       decoration: InputDecoration(
-        suffixIcon: widget.suffixIcon,
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+        suffixIcon: showSuffixIcon
+            ? IconButton(
+                icon: suffixIcon!,
+                onPressed: onTapSuffixIcon,
+              )
+            : null,
+        suffixIconColor: AppColors.white,
         fillColor: Colors.transparent,
         focusColor: AppColors.white,
         iconColor: AppColors.white,
-        filled: true,
-        hintText: widget.hint,
+        hintText: hint,
         hintStyle: const TextStyle(
           color: AppColors.greySearch,
           fontWeight: FontWeight.w600,
         ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(widget.borderRadius),
-          borderSide: BorderSide(color: widget.colorBorder, width: 3),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(widget.borderRadius),
-          borderSide: const BorderSide(color: AppColors.white, width: 3),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(widget.borderRadius),
-          borderSide: const BorderSide(color: Colors.red, width: 0.5),
-        ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(widget.borderRadius),
-          borderSide: const BorderSide(color: Colors.red, width: 0.5),
-        ),
-        contentPadding: widget.contentPadding ??
-            const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-        prefixIcon: widget.showPrefixIcon
-            ? Icon(
-                widget.prefixIcon,
-                size: 22,
-                color: AppColors.white,
-              )
-            : null,
+        enabledBorder: outLintborder(colorBorder, 3),
+        focusedBorder: outLintborder(colorBorder, 3),
+        errorBorder: outLintborder(Colors.red, .5),
+        focusedErrorBorder: outLintborder(Colors.red, .5),
       ),
-      onChanged: widget.onChanged,
-      onFieldSubmitted: widget.onSubmitted,
     );
   }
+}
+
+OutlineInputBorder outLintborder(Color color, double width) {
+  return OutlineInputBorder(
+    borderRadius: BorderRadius.circular(30),
+    borderSide: BorderSide(color: color, width: width),
+  );
 }

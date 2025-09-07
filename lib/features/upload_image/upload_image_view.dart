@@ -59,6 +59,15 @@ class _UploadImageViewState extends State<UploadImageView> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(16),
                         color: AppColors.white,
+                        // image: DecorationImage(
+                        //   image: widget.image == null
+                        //       ? const AssetImage("")
+                        //       : AssetImage(
+                        //           "${widget.image}",
+                        //         ),
+                        //   fit: BoxFit.fitHeight,
+                        //   opacity: .5,
+                        // ),
                       ),
                       child: Center(
                         child: widget.image == null
@@ -68,7 +77,14 @@ class _UploadImageViewState extends State<UploadImageView> {
                               )
                             : Stack(
                                 children: [
-                                  Image.file(widget.image!),
+                                  SizedBox(
+                                    width:
+                                        MediaQuery.of(context).size.width / 1.5,
+                                    height: MediaQuery.of(context).size.height /
+                                        2.4,
+                                    child: Image.file(widget.image!,
+                                        fit: BoxFit.cover),
+                                  ),
                                   Positioned(
                                     right: 5,
                                     top: 5,

@@ -84,19 +84,25 @@ class _SoundSliderAndDisposeWidgetState
               CircleAvatar(
                 backgroundColor: AppColors.white,
                 radius: 25,
-                child: IconButton(
-                  icon: Icon(
-                    DetailsController.isPlaying
-                        ? Icons.pause
-                        : Icons.play_arrow,
+                child: Consumer<DetailsController>(
+                  builder: (BuildContext context, DetailsController value,
+                          Widget? child) =>
+                      IconButton(
+                    icon: Icon(
+                      DetailsController.isPlaying
+                          ? Icons.pause
+                          : Icons.play_arrow,
+                    ),
+                    onPressed: () {
+                      if (DetailsController.isPlaying) {
+                        DetailsController.player.pause();
+                        value.changeisPlayingState();
+                      } else {
+                        DetailsController.player
+                            .play(AssetSource(widget.sound));
+                      }
+                    },
                   ),
-                  onPressed: () {
-                    if (DetailsController.isPlaying) {
-                      DetailsController.player.pause();
-                    } else {
-                      DetailsController.player.play(AssetSource(widget.sound));
-                    }
-                  },
                 ),
               ),
               Image.asset(AppImages.goTenSecondIcon),

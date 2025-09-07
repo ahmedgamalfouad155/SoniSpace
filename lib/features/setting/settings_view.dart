@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:sonispace/core/functions/navigator.dart';
 import 'package:sonispace/core/utils/app_colors.dart';
 import 'package:sonispace/core/utils/app_styles.dart';
+import 'package:sonispace/features/auth/login_view.dart';
+import 'package:sonispace/features/auth/view_model/auth_controller.dart';
 import 'package:sonispace/features/setting/view_model/setting_abb_widget.dart';
 import 'package:sonispace/features/setting/view_model/setting_controller.dart';
 import 'package:sonispace/features/setting/widgets/list_tile_setting_widget.dart';
@@ -57,10 +60,16 @@ class SettingsView extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const ListTile(
-                        title: Text(
-                          "Log out",
-                          style: AppStyles.textStyle20,
+                      ListTile(
+                        title: GestureDetector(
+                          onTap: () async {
+                            AuthController().changeTextEditControllerToEmpty();
+                            defaultReplacementNavigator(context, LoginView());
+                          },
+                          child: const Text(
+                            "Log out",
+                            style: AppStyles.textStyle20,
+                          ),
                         ),
                       ),
                     ],

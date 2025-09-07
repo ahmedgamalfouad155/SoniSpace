@@ -35,14 +35,9 @@ class LoginView extends StatelessWidget {
                 const SizedBox(height: 20),
                 const PasswordFormFieldLoginWidget(),
                 const SizedBox(height: 20),
-                const Row(
-                  children: [
-                    Text(
-                      "Forget password?",
-                      style: AppStyles.textStyle16,
-                    ),
-                  ],
-                ),
+                const Row(children: [
+                  Text("Forget password?", style: AppStyles.textStyle16)
+                ]),
                 const SizedBox(height: 50.0),
                 LoginButtonWidget(formKey: _formKey),
                 const SizedBox(

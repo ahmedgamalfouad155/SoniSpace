@@ -24,13 +24,13 @@ class LoginButtonWidget extends StatelessWidget {
       borderRadius: 16.r,
       title: 'Login',
       verticalPadding: 0,
-      textStyle:
-          AppStyles.textStyle12.copyWith(color: AppColors.white),
+      textStyle: AppStyles.textStyle12.copyWith(color: AppColors.white),
       onPressed: () {
         if (_formKey.currentState!.validate()) {
           AuthController().loginEmailController.text;
           AuthController().loginPasswordController.text;
           FocusScope.of(context).unfocus();
+          // DefaultNavigationWidget(page: const NavBarView());
           defaultReplacementNavigator(
             context,
             const NavBarView(),
