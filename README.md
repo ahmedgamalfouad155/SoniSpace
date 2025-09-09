@@ -55,9 +55,17 @@ I contributed to both:
 
 ---
 
-## 📜 License
+---
 
-This project is open-source and available under the [MIT License](LICENSE).
+## 🏆 Awards & Recognition
+
+- 🥇 **Best Use of Technology**  
+  Awarded at **NASA Space Apps Cairo 2023** for outstanding implementation of 3D data sonification.  
+  [🔗 View Official Post](https://www.facebook.com/photo/?fbid=727866899374610&set=pcb.727765516051415)
+
+- 🏅 **ALX Award**  
+  Recognized for innovation and impact during NASA Space Apps Cairo 2023.  
+  [🔗 View Official Post](https://www.facebook.com/photo/?fbid=727078856120081&set=a.549529553875013)
 
 ---
 
